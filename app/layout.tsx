@@ -1,17 +1,14 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Noto_Sans_JP } from "next/font/google";
 import "./globals.css";
 import { health } from "./_data/health";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
+const noteSansJp = Noto_Sans_JP({
+  variable: "--font-note-sans-jp",
   subsets: ["latin"],
-});
+  weight: ["400", "700"]
+})
 
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
-});
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -27,7 +24,8 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
+      className={`${noteSansJp.variable} h-full antialiased`}
+      suppressHydrationWarning // Chrome拡張機能のカスタム属性がCC側でアタッチされることでエラーになることがあるので無視する（html属性配下には影響がない。ただし基本的にhtmlタグ以外に付与することは禁止する）
     >
       <body className="min-h-full flex flex-col">{children}</body>
     </html>
