@@ -1,14 +1,6 @@
 import type { Metadata } from "next";
-import { Noto_Sans_JP } from "next/font/google";
 import "./globals.css";
 import { health } from "./_data/health";
-
-const noteSansJp = Noto_Sans_JP({
-  variable: "--font-note-sans-jp",
-  subsets: ["latin"],
-  weight: ["400", "700"]
-})
-
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -23,8 +15,8 @@ export default function RootLayout({
   health("RootLayout")
   return (
     <html
-      lang="en"
-      className={`${noteSansJp.variable} h-full antialiased`}
+      lang="jp"
+      className="h-full antialiased"
       suppressHydrationWarning // Chrome拡張機能のカスタム属性がCC側でアタッチされることでエラーになることがあるので無視する（html属性配下には影響がない。ただし基本的にhtmlタグ以外に付与することは禁止する）
     >
       <body className="min-h-full flex flex-col">{children}</body>
