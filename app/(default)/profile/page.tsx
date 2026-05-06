@@ -1,4 +1,5 @@
 import { verifySession } from "@/app/_data/verify-session";
+import Link from "next/link";
 import { unauthorized } from "next/navigation";
 
 export default async function Page() {
@@ -9,6 +10,9 @@ export default async function Page() {
     unauthorized();
   }
   return (
-    <div>プロフィールページ</div>
+    <div>プロフィール
+      <br />
+      <Link href="/" className="text-blue-500">ホームへ</Link>
+    </div>
   )
 }
