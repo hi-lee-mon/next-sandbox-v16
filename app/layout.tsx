@@ -3,8 +3,9 @@ import "./globals.css";
 import { health } from "./_data/health";
 import { Noto_Sans } from "next/font/google";
 import { cn } from "@/lib/utils";
+import { ThemeProvider } from "@/components/theme-provider";
 
-const notoSans = Noto_Sans({subsets:['latin'],variable:'--font-sans'});
+const notoSans = Noto_Sans({ subsets: ['latin'], variable: '--font-sans' });
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -23,7 +24,16 @@ export default function RootLayout({
       className={cn("h-full antialiased", "font-sans", notoSans.variable)}
       suppressHydrationWarning // Chrome拡張機能のカスタム属性がCC側でアタッチされることでエラーになることがあるので無視する（html属性配下には影響がない。ただし基本的にhtmlタグ以外に付与することは禁止する）
     >
-      <body className="min-h-full flex flex-col">{children}</body>
+      <body className="min-h-full flex flex-col">
+        <ThemeProvider
+          attribute="class"
+          defaultTheme="system"
+          enableSystem
+          disableTransitionOnChange
+        >
+          {children}
+        </ThemeProvider>
+      </body>
     </html>
   );
 }
