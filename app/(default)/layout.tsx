@@ -2,6 +2,7 @@ import { redirect } from "next/navigation";
 import { deleteToken } from "../_action/delete-token";
 import { verifySession } from "../_data/verify-session";
 import { health } from "../_data/health";
+import { Button } from "@/components/ui/button";
 
 export default async function Layout(props: LayoutProps<"/">) {
   // TODO：layoutでcookieにアクセスしているため全体的にdynamicになっている。cookie取得をCCに寄せることで解決は可能
@@ -17,7 +18,7 @@ export default async function Layout(props: LayoutProps<"/">) {
           isLogin ?
             (
               <form action={deleteToken}>
-                <button type="submit" className="border text-sm p-1 rounded-md">ログアウト</button>
+                <Button type="submit">ログアウト</Button>
               </form>
             ) :
             (
@@ -25,7 +26,7 @@ export default async function Layout(props: LayoutProps<"/">) {
                 "use server"
                 redirect("/login")
               }}>
-                <button type="submit" className="border text-sm p-1 rounded-md">ログイン</button>
+                <Button type="submit">ログイン</Button>
               </form>
             )
         }
