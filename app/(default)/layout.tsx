@@ -4,6 +4,7 @@ import { verifySession } from "../_data/verify-session";
 import { health } from "../_data/health";
 
 export default async function Layout(props: LayoutProps<"/">) {
+  // TODO：layoutでcookieにアクセスしているため全体的にdynamicになっている。cookie取得をCCに寄せることで解決は可能
   const session = await verifySession()
   const isLogin = !!session?.name
   health("default-layout")
