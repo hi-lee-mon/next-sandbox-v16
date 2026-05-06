@@ -1,12 +1,19 @@
 import { NextResponse } from 'next/server'
 import type { NextRequest } from 'next/server'
+import { getToken } from './app/_data/get-token'
 
 let count = 0
 
 // このfunction内で`await`を使用する場合は、`async`でマークできます
-export function proxy(request: NextRequest) {
+export async function proxy(request: NextRequest) {
   count = count + 1
   console.log("🚨proxy", count)
+
+  request
+
+  const token = await getToken()
+  if (!token) {
+  }
 }
 
 export const config = {
