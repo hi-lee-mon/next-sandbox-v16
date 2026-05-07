@@ -72,7 +72,7 @@ export default function Page() {
   }
 
   return (
-    <Card className="w-full sm:max-w-md">
+    <Card className="w-full md:max-w-lg">
       <CardHeader>
         <CardTitle>ログイン</CardTitle>
         <CardDescription>
