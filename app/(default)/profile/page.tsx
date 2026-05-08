@@ -1,6 +1,7 @@
 import { verifySession } from "@/app/_data/verify-session";
 import Link from "next/link";
 import { unauthorized } from "next/navigation";
+import CreateUserForm from "./_components/create-user-form";
 
 export default async function Page() {
   const session = await verifySession();
@@ -13,6 +14,7 @@ export default async function Page() {
     <div>プロフィール
       <br />
       <Link href="/" className="text-blue-500">ホームへ</Link>
+      <CreateUserForm />
     </div>
   )
 }
