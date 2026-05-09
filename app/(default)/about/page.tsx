@@ -1,5 +1,3 @@
-"use client"
-import { verifySession } from "@/lib/verify-session";
 import Link from "next/link";
 
 export default function About() {
