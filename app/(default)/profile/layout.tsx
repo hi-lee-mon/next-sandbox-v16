@@ -1,6 +1,8 @@
 import { health } from "@/app/_data/health"
 import { verifySession } from "@/lib/verify-session";
-import { forbidden, unauthorized } from "next/navigation"
+import { unauthorized } from "next/navigation"
+
+
 
 export default async function Layout(props: LayoutProps<"/profile">) {
   health("profile-layout")

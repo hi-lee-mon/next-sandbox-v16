@@ -6,10 +6,19 @@ export default async function Home() {
     <div>ホームページ
       <br />
       <Link href="/about" className={buttonVariants({
-        variant: "ghost"
+        variant: "ghost",
+        className: "text-blue-500 underline"
       })}>aboutへ</Link>
       <br />
-      <Link href="/profile" className="text-blue-500 border-b">profileへ</Link>
+      <Link href="/profile" className={buttonVariants({
+        variant: "ghost",
+        className: "text-blue-500 underline"
+      })}>profileへ</Link>
+      <br />
+      <Link href="/blogs" className={buttonVariants({
+        variant: "ghost",
+        className: "text-blue-500 underline"
+      })}>blogsへ</Link>
     </div>
   );
 }

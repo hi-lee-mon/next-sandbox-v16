@@ -10,13 +10,13 @@ GUI ツール（pgAdmin）が不要なため、素早く操作したいときに
 ## 1. コンテナに接続する
 
 ```bash
-docker exec -it next-sandbox-postgres psql -U postgres -d next_sandbox
+docker exec -it next-sandbox-postgres psql -U admin -d next_sandbox
 ```
 
 コマンドの意味：
 
 ```
-docker exec -it next-sandbox-postgres psql -U postgres -d next_sandbox
+docker exec -it next-sandbox-postgres psql -U admin -d next_sandbox
 │           │   │                     │    │           │
 │           │   │                     │    │           └─ 接続先のDB名（-d = database）
 │           │   │                     │    └─────────── 接続ユーザー名（-U = user）
