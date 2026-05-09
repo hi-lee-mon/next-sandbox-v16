@@ -1,0 +1,12 @@
+{
+  "recommendations": [
+    "dbaeumer.vscode-eslint",
+    "bradlc.vscode-tailwindcss",
+    "csstools.postcss",
+    "yusukehirao.vscode-markuplint",
+    "usernamehw.errorlens",
+    "eamodio.gitlens",
+    "blazejkustra.react-compiler-marker",
+    "SuhelMakkad.shadcn-ui"
+  ]
+}

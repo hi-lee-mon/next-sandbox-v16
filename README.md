@@ -1,36 +1,94 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# next-sandbox-v16
 
-## Getting Started
+Next.js 16 の新機能・API を試す学習用サンドボックス。
 
-First, run the development server:
+Cache Componentを使用する。
+
+React Compilerは使用しない。理由は会社が使っておらず挙動差異をなくしたいため。ただし、実装ルールとしてReact Compiler Markerを使い常にReact Compilerの導入ができる状況にすること
+
+## 技術スタック
+
+| カテゴリ | ライブラリ |
+|---|---|
+| フレームワーク | Next.js 16.2 / React 19 |
+| スタイリング | Tailwind CSS v4 |
+| UIコンポーネント | shadcn/ui |
+| 認証 | better-auth |
+| DB | PostgreSQL 18 (Docker) |
+| フォーム | react-hook-form + Zod |
+| Lint | ESLint / markuplint |
+
+## セットアップ
+
+### 1. 依存関係のインストール
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+pnpm install
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+### 2. 環境変数の設定
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```bash
+cp .env.example .env.local
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+`.env.local` を編集して必要な値を設定する。
 
-## Learn More
+### 3. データベースの起動
 
-To learn more about Next.js, take a look at the following resources:
+```bash
+docker compose up -d
+```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+| サービス | URL |
+|---|---|
+| PostgreSQL | `localhost:5432` |
+| pgAdmin | http://localhost:5050 |
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+### 4. 開発サーバーの起動
 
-## Deploy on Vercel
+```bash
+pnpm dev
+```
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+http://localhost:3000 で起動する。
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## スクリプト
+
+```bash
+pnpm dev       # 開発サーバー起動
+pnpm build     # プロダクションビルド
+pnpm start     # プロダクションサーバー起動
+pnpm lint      # ESLint 実行
+pnpm muplint   # markuplint 実行
+```
+
+## ディレクトリ構成
+
+```
+app/
+├── (default)/          # 認証が必要なページ群
+│   ├── about/
+│   ├── profile/
+│   └── test/
+├── login/              # ログインページ
+├── signup/             # サインアップページ
+└── api/auth/           # better-auth のAPIルート
+lib/
+├── auth.ts             # better-auth サーバー設定
+├── auth-client.ts      # better-auth クライアント設定
+├── db.ts               # PostgreSQL 接続
+├── action/             # Server Actions
+└── verify-session.ts   # セッション検証
+components/ui/          # shadcn/ui コンポーネント
+doc/                    # 学習メモ・設計ドキュメント
+```
+
+## ドキュメント
+
+`doc/` 配下に実装時のメモや設計方針をまとめている。
+
+- `doc/next/` — Next.js のAPI・設計パターン
+- `doc/db/` — PostgreSQL / Docker 環境構築
+- `doc/form/` — フォーム設計
+- `doc/shadcnui/` — shadcn/ui の使い方
