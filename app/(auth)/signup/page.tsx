@@ -29,9 +29,9 @@ import {
 } from "@/components/ui/input-group"
 import { Eye, EyeOff } from "lucide-react"
 import { useRouter } from "next/navigation"
-import { authClient } from "@/lib/auth-client"
-import { SignUpInput, signUpSchema } from "@/lib/action/schema"
-import { signUp } from "@/lib/action/sign-up"
+import { authClient } from "@/lib/auth/auth-client"
+import { SignUpInput, signUpSchema } from "@/lib/auth/action/schema"
+import { signUp } from "@/lib/auth/action/sign-up"
 
 export default function Page() {
   const [showPassword, setShowPassword] = React.useState(true)

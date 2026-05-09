@@ -1,5 +1,5 @@
 "use server";
-import { auth } from "@/lib/auth"
+import { auth } from "@/lib/auth/auth"
 import { LoginInput, loginSchema } from "./schema";
 import { redirect } from "next/navigation";
 import { headers } from "next/headers";

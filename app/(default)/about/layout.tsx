@@ -1,4 +1,4 @@
-import { health } from "@/app/_data/health"
+import { health } from "@/lib/data/health"
 
 export default async function Layout(props: LayoutProps<"/about">) {
   health("about-layout")

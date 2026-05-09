@@ -1,5 +1,5 @@
-import { health } from "@/app/_data/health"
-import { verifySession } from "@/lib/verify-session";
+import { health } from "@/lib/data/health"
+import { verifySession } from "@/lib/auth/verify-session";
 import { unauthorized } from "next/navigation"
 
 

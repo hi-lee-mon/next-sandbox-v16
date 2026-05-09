@@ -1,5 +1,5 @@
 import 'server-only'
-import { auth } from '@/lib/auth'
+import { auth } from '@/lib/auth/auth'
 import { headers } from 'next/headers'
 import { cache } from 'react'
 

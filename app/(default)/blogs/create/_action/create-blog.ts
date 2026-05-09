@@ -1,7 +1,7 @@
 "use server";
-import sql from "@/lib/db";
+import sql from "@/lib/auth/db";
 import { createBlogSchema, CreateBlogInput } from "../../schema";
-import { verifySession } from "@/lib/verify-session";
+import { verifySession } from "@/lib/auth/verify-session";
 import { redirect } from "next/navigation";
 
 export async function createBlog(data: CreateBlogInput): Promise<{ error: string } | never> {

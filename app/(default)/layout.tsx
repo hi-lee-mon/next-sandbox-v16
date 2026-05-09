@@ -1,4 +1,4 @@
-import { health } from "../_data/health";
+import { health } from "../../lib/data/health";
 import { ThemeToggle } from "@/components/theme-toggle";
 import HeaderItem from "./_components/header-item";
 import { Suspense } from "react";

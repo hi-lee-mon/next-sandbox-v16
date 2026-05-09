@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import "./globals.css";
-import { health } from "./_data/health";
+import { health } from "../lib/data/health";
 import { Noto_Sans } from "next/font/google";
 import { cn } from "@/lib/utils";
 import { ThemeProvider } from "@/components/theme-provider";

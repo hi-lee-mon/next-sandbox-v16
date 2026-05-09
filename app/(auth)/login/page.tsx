@@ -29,9 +29,9 @@ import {
   InputGroupInput,
 } from "@/components/ui/input-group"
 import { Eye, EyeOff, Loader2 } from "lucide-react"
-import { LoginInput, loginSchema } from "@/lib/action/schema"
+import { LoginInput, loginSchema } from "@/lib/auth/action/schema"
 import Link from "next/link"
-import { login } from "@/lib/action/login"
+import { login } from "@/lib/auth/action/login"
 
 export default function Page() {
   const [showPassword, setShowPassword] = React.useState(true)

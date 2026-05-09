@@ -1,6 +1,6 @@
 import { Button } from "@/components/ui/button"
-import { logout } from "@/lib/action/logout"
-import { verifySession } from "@/lib/verify-session"
+import { logout } from "@/lib/auth/action/logout"
+import { verifySession } from "@/lib/auth/verify-session"
 import { redirect } from "next/navigation"
 
 export default async function HeaderItem() {

@@ -1,6 +1,6 @@
 import "server-only";
-import sql from "@/lib/db";
-import { verifySession } from "@/lib/verify-session";
+import sql from "@/lib/auth/db";
+import { verifySession } from "@/lib/auth/verify-session";
 import { type Blog } from "../schema";
 
 
