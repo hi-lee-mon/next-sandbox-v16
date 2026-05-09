@@ -1,0 +1,12 @@
+アクションの結果を画面に表示したい:useActionState
+
+pendingだけ欲しい:useTransition
+
+アクションの結果を使わない：useTransition
+
+router.pushによるisPendingを取得したい：useTransition
+
+server actionをフォームの外からコールしたい：useTransition
+→公式を見ると「useActionState は、フォームアクションの結果に基づいて state を更新するためのフックです。」とあるようにformとの融合をしつつactionの状態（ミューテーションの戻り値やisPending）を管理するために使う。
+
+重い状態更新：useTransition（そもそもアクションと関係ない。状態更新で使うからuseActionStateは使わない）

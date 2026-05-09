@@ -1,34 +1,37 @@
 import { NextResponse } from 'next/server'
 import type { NextRequest } from 'next/server'
-import { getToken } from './app/_data/get-token'
+import { getSessionCookie } from 'better-auth/cookies'
 
-let count = 0
+const publicPaths = ["/"]
+const authPaths = ['/login', '/signup']
 
-// このfunction内で`await`を使用する場合は、`async`でマークできます
-export async function proxy(request: NextRequest) {
-  count = count + 1
-  console.log("🚨proxy", count)
+export function proxy(request: NextRequest) {
+  const { pathname } = request.nextUrl
 
-  request
+  if (publicPaths.some((p) => pathname.startsWith(p))) {
+    // ヘッダーをつける場合はnext()の引数にheadersを渡す
+    return NextResponse.next()
+  }
 
-  const token = await getToken()
-  if (!token) {
+  // 楽観的認証（cookieはクライアント由来の値であり偽造可能であるため）
+  const sessionCookie = getSessionCookie(request)
+  const isAuthPage = authPaths.some((p) => pathname.startsWith(p))
+
+  if (!sessionCookie && !isAuthPage) {
+    return NextResponse.redirect(new URL('/login', request.url))
+  }
+
+  if (sessionCookie && isAuthPage) {
+    return NextResponse.redirect(new URL('/', request.url))
   }
 }
 
 export const config = {
-  // middlewareを呼び出して良いパスを指定
   matcher: [
-    /*
-     * 以下のパスを除く全てのリクエストにマッチする
-     * - _next/static (static files)
-     * - _next/image (image optimization files)
-     * - favicon.ico (favicon file)
-     * - その他、拡張子が *.(svg|png|jpg|jpeg|gif|webp) のファイル
-     */ {
-      source: '/((?!_next/static|_next/image|favicon.ico|.*\\.(?:svg|png|jpg|jpeg|gif|webp)$).*)',
-      // プリフェッチでmiddlewareが呼び出されないようにする
+    {
+      source: '/((?!_next/static|_next/image|favicon.ico|api/auth|.*\\.(?:svg|png|jpg|jpeg|gif|webp)$).*)',
       missing: [
+        // `<Link>`のprefetchでの実行を防止する
         { type: 'header', key: 'next-router-prefetch' },
         { type: 'header', key: 'purpose', value: 'prefetch' },
       ],
