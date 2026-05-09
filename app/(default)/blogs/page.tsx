@@ -9,6 +9,9 @@ export default async function BlogsPage() {
     <div className="max-w-2xl">
       <div className="flex items-center justify-between mb-6">
         <h1 className="text-2xl font-bold">ブログ一覧</h1>
+        <Link href="/" className={buttonVariants()}>
+          ホームへ戻る
+        </Link>
         <Link href="/blogs/create" className={buttonVariants()}>
           新規投稿
         </Link>
@@ -29,9 +32,8 @@ export default async function BlogsPage() {
                   )}
                 </div>
                 <p className="text-muted-foreground text-sm mt-1 line-clamp-2">{blog.body}</p>
-                <p className="text-muted-foreground text-sm mt-1 line-clamp-2">{blog.user_id}</p>
                 <p className="text-xs text-muted-foreground mt-2">
-                  {blog.created_at.toLocaleDateString("ja-JP")}
+                  {blog.author_name ?? "不明"} · {blog.created_at.toLocaleDateString("ja-JP")}
                 </p>
               </Link>
             </li>
