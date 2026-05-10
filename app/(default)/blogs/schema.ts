@@ -12,6 +12,7 @@ export const blogSchema = z.object({
 });
 
 export type Blog = z.infer<typeof blogSchema>;
+export type BlogListItem = Blog & { author_name: string | null };
 
 export const createBlogSchema = z.object({
   title: z.string().min(1, "タイトルを入力してください"),
