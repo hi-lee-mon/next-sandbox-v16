@@ -16,7 +16,7 @@ next-sandbox-v16/
 
 このプロジェクトは ORM（Prisma・Drizzle など）を使いません。テーブルの変更履歴を `migrations/` フォルダの SQL ファイルで管理します。
 
-**命名規則：** `連番_説明.sql`（例：`001_create_blogs.sql`）  
+**命名規則：** `連番_説明.sql`（例：`001_create_blogs.sql`）
 連番を付けることで、どの順番で適用すべきかが一目でわかります。
 
 ---
