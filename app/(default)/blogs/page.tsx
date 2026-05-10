@@ -2,6 +2,7 @@ import { buttonVariants } from "@/components/ui/button";
 import Link from "next/link";
 import { getPublicBlogs } from "./_data/get-public-blogs";
 
+export const dynamic = "force-static"
 export const revalidate = 15;
 
 export default async function BlogsPage() {

@@ -1,10 +1,10 @@
 "use server";
 import { auth } from "@/lib/auth/auth"
 import { LoginInput, loginSchema } from "./schema";
-import { redirect } from "next/navigation";
 import { headers } from "next/headers";
+import { redirect } from "next/navigation";
 
-export const login = async (body: LoginInput): Promise<{ error: string } | never> => {
+export const login = async (body: LoginInput) => {
   const result = loginSchema.safeParse(body)
 
   if (!result.success) {

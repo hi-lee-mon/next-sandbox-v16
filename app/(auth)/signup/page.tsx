@@ -28,8 +28,6 @@ import {
   InputGroupInput,
 } from "@/components/ui/input-group"
 import { Eye, EyeOff } from "lucide-react"
-import { useRouter } from "next/navigation"
-import { authClient } from "@/lib/auth/auth-client"
 import { SignUpInput, signUpSchema } from "@/lib/auth/action/schema"
 import { signUp } from "@/lib/auth/action/sign-up"
 

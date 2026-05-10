@@ -31,11 +31,13 @@ import {
 import { Eye, EyeOff, Loader2 } from "lucide-react"
 import { LoginInput, loginSchema } from "@/lib/auth/action/schema"
 import Link from "next/link"
-import { login } from "@/lib/auth/action/login"
+import { authClient } from "@/lib/auth/auth-client"
+import { useRouter } from "next/navigation"
 
 export default function Page() {
   const [showPassword, setShowPassword] = React.useState(true)
   const [isPending, startTransition] = React.useTransition()
+  const router = useRouter()
 
   const form = useForm<LoginInput>({
     resolver: standardSchemaResolver(loginSchema),
@@ -49,12 +51,17 @@ export default function Page() {
 
   function onSubmit(data: LoginInput) {
     startTransition(async () => {
-      const result = await login(data)
-      if (result?.error) {
+      const { error } = await authClient.signIn.email({
+        email: data.email,
+        password: data.password,
+      })
+      if (error) {
         toast.error("ログインに失敗しました", {
-          description: result.error,
+          description: error.message,
         })
+        return
       }
+      router.push("/")
     })
   }
 

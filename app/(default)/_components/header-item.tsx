@@ -1,30 +1,30 @@
-import { Button } from "@/components/ui/button"
-import { logout } from "@/lib/auth/action/logout"
-import { verifySession } from "@/lib/auth/verify-session"
-import { redirect } from "next/navigation"
+"use client"
 
-export default async function HeaderItem() {
-  const session = await verifySession()
+import { Button } from "@/components/ui/button"
+import { authClient } from "@/lib/auth/auth-client"
+import { useRouter } from "next/navigation"
+
+export default function HeaderItem() {
+  const { data: session, isPending } = authClient.useSession()
+  const router = useRouter()
+
+  if (isPending) return null
 
   return (
     <div>
       <p>{session ? `【${session.user.name}】でログインしています` : "未ログイン"}</p>
-      {
-        session ?
-          (
-            <form action={logout}>
-              <Button type="submit">ログアウト</Button>
-            </form>
-          ) :
-          (
-            <form action={async () => {
-              "use server"
-              redirect("/login")
-            }}>
-              <Button type="submit">ログイン</Button>
-            </form>
-          )
-      }
+      {session ? (
+        <Button
+          onClick={async () => {
+            await authClient.signOut()
+            router.refresh()
+          }}
+        >
+          ログアウト
+        </Button>
+      ) : (
+        <Button onClick={() => router.push("/login")}>ログイン</Button>
+      )}
     </div>
   )
 }

@@ -1,6 +1,9 @@
 import { buttonVariants } from "@/components/ui/button";
 import Link from "next/link";
-import { getDangerousBlogs, getSafeBlogs } from "./_data/get-blogs";
+import { getDangerousBlogs } from "./_data/get-blogs";
+
+export const dynamic = "force-static"
+export const revalidate = 15;
 
 export default async function BlogsPage() {
   const blogs = await getDangerousBlogs();
