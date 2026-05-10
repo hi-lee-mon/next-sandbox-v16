@@ -1,12 +1,12 @@
 "use server";
 import sql from "@/lib/auth/db";
-import { createBlogSchema, CreateBlogInput } from "../../schema";
+import { createBlogSchema, CreateBlogDTO } from "../../schema";
 import { verifySession } from "@/lib/auth/verify-session";
 import { redirect } from "next/navigation";
 import { updateTag } from "next/cache";
 import { BLOGS_CACHE_TAG, privateUserBlogsCacheTag } from "../../_data/cache-tags";
 
-export async function createBlog(data: CreateBlogInput): Promise<{ error: string } | never> {
+export async function createBlog(data: CreateBlogDTO): Promise<{ error: string } | never> {
   const session = await verifySession();
   if (!session) {
     return { error: "ログインが必要です" };

@@ -24,20 +24,20 @@ import {
 } from "@/components/ui/field";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
-import { createBlogSchema, CreateBlogInput } from "../schema";
+import { createBlogSchema, CreateBlogInput, CreateBlogDTO } from "../schema";
 import { createBlog } from "@/app/(default)/blogs/create/_action/create-blog";
 
 export default function CreateBlogPage() {
   const [isPending, startTransition] = React.useTransition();
 
-  const form = useForm<CreateBlogInput>({
+  const form = useForm<CreateBlogInput, unknown, CreateBlogDTO>({
     resolver: standardSchemaResolver(createBlogSchema),
     defaultValues: { title: "", body: "", isPrivate: false },
     mode: "onSubmit",
     reValidateMode: "onChange",
   });
 
-  function onSubmit(data: CreateBlogInput) {
+  function onSubmit(data: CreateBlogDTO) {
     startTransition(async () => {
       const result = await createBlog(data);
       if (result?.error) {

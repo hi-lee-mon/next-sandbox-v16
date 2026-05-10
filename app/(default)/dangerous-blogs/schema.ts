@@ -20,3 +20,4 @@ export const createBlogSchema = z.object({
 })
 
 export type CreateBlogInput = z.input<typeof createBlogSchema>
+export type CreateBlogDTO = z.output<typeof createBlogSchema>
