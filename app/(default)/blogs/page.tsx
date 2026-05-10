@@ -1,10 +1,12 @@
 import { buttonVariants } from "@/components/ui/button";
-import { cacheLife } from "next/cache";
+import { cacheLife, cacheTag } from "next/cache";
 import Link from "next/link";
 import { getPublicBlogs } from "./_data/get-public-blogs";
+import { BLOGS_CACHE_TAG } from "./_data/cache-tags";
 
 export default async function BlogsPage() {
   "use cache";
+  cacheTag(BLOGS_CACHE_TAG);
   cacheLife({ stale: 0, revalidate: 15, expire: 300 });
   const blogs = await getPublicBlogs();
 

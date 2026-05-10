@@ -3,7 +3,7 @@ import sql from "@/lib/auth/db";
 import { createBlogSchema, CreateBlogInput } from "../../schema";
 import { verifySession } from "@/lib/auth/verify-session";
 import { redirect } from "next/navigation";
-import { revalidateTag } from "next/cache";
+import { updateTag } from "next/cache";
 import { BLOGS_CACHE_TAG, privateUserBlogsCacheTag } from "../../_data/cache-tags";
 
 export async function createBlog(data: CreateBlogInput): Promise<{ error: string } | never> {
@@ -28,10 +28,10 @@ export async function createBlog(data: CreateBlogInput): Promise<{ error: string
   }
 
   if (result.data.isPrivate) {
-    revalidateTag(privateUserBlogsCacheTag(session.user.id), { expire: 0 });
+    updateTag(privateUserBlogsCacheTag(session.user.id));
     redirect("/profile");
   } else {
-    revalidateTag(BLOGS_CACHE_TAG, { expire: 0 });
+    updateTag(BLOGS_CACHE_TAG);
     redirect("/blogs");
   }
 }
