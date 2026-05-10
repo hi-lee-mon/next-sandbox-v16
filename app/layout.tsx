@@ -5,6 +5,8 @@ import { Noto_Sans } from "next/font/google";
 import { cn } from "@/lib/utils";
 import { ThemeProvider } from "@/components/theme-provider";
 import { Toaster } from "@/components/ui/sonner";
+import { RscBoundaryProvider } from "@rsc-boundary/next";
+
 const notoSans = Noto_Sans({ subsets: ['latin'], variable: '--font-sans' });
 
 export const metadata: Metadata = {
@@ -31,7 +33,9 @@ export default function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
-          {children}
+          <RscBoundaryProvider>
+            {children}
+          </RscBoundaryProvider>
           <Toaster />
         </ThemeProvider>
       </body>

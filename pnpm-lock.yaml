@@ -17,6 +17,9 @@ importers:
       '@hookform/resolvers':
         specifier: ^5.2.2
         version: 5.2.2(react-hook-form@7.75.0(react@19.2.4))
+      '@rsc-boundary/next':
+        specifier: ^0.3.2
+        version: 0.3.2(next@16.2.4(@babel/core@7.29.0)(react-dom@19.2.4(react@19.2.4))(react@19.2.4))(react-dom@19.2.4(react@19.2.4))(react@19.2.4)
       better-auth:
         specifier: ^1.6.9
         version: 1.6.9(@prisma/client@5.22.0)(better-sqlite3@12.9.0)(drizzle-orm@0.41.0(@prisma/client@5.22.0)(@types/pg@8.20.0)(better-sqlite3@12.9.0)(kysely@0.28.17)(pg@8.20.0)(postgres@3.4.9))(next@16.2.4(@babel/core@7.29.0)(react-dom@19.2.4(react@19.2.4))(react@19.2.4))(pg@8.20.0)(react-dom@19.2.4(react@19.2.4))(react@19.2.4)
@@ -900,6 +903,22 @@ packages:
       prisma: '*'
     peerDependenciesMeta:
       prisma:
+        optional: true
+
+  '@rsc-boundary/core@0.3.2':
+    resolution: {integrity: sha512-YqBuc8LErGjSxZIM9VvHc7KYjeA60e7WIoRT1OPgEBL/jbOpPhTEl1RBqDmY0tF2o5f8QJxj4J55Z1vz1+HbWA==}
+    peerDependencies:
+      react: ^19.0.0
+      react-dom: ^19.0.0
+
+  '@rsc-boundary/next@0.3.2':
+    resolution: {integrity: sha512-3xGMvk8d2LtRb+aKalwPiccMlX0PlVMtCRG96Jm/9PB+jm768+b04sf2mzgQ9cx31EHZCQX+0nh+vDZIVcLhjA==}
+    peerDependencies:
+      next: ^16.0.0
+      react: ^19.0.0
+      react-dom: ^19.0.0
+    peerDependenciesMeta:
+      next:
         optional: true
 
   '@rtsao/scc@1.1.0':
@@ -4979,6 +4998,19 @@ snapshots:
   '@opentelemetry/semantic-conventions@1.40.0': {}
 
   '@prisma/client@5.22.0': {}
+
+  '@rsc-boundary/core@0.3.2(react-dom@19.2.4(react@19.2.4))(react@19.2.4)':
+    dependencies:
+      react: 19.2.4
+      react-dom: 19.2.4(react@19.2.4)
+
+  '@rsc-boundary/next@0.3.2(next@16.2.4(@babel/core@7.29.0)(react-dom@19.2.4(react@19.2.4))(react@19.2.4))(react-dom@19.2.4(react@19.2.4))(react@19.2.4)':
+    dependencies:
+      '@rsc-boundary/core': 0.3.2(react-dom@19.2.4(react@19.2.4))(react@19.2.4)
+      react: 19.2.4
+      react-dom: 19.2.4(react@19.2.4)
+    optionalDependencies:
+      next: 16.2.4(@babel/core@7.29.0)(react-dom@19.2.4(react@19.2.4))(react@19.2.4)
 
   '@rtsao/scc@1.1.0': {}
 
