@@ -1,11 +1,11 @@
 import { buttonVariants } from "@/components/ui/button";
+import { cacheLife } from "next/cache";
 import Link from "next/link";
 import { getPublicBlogs } from "./_data/get-public-blogs";
 
-export const dynamic = "force-static"
-export const revalidate = 15;
-
 export default async function BlogsPage() {
+  "use cache";
+  cacheLife({ stale: 0, revalidate: 15, expire: 300 });
   const blogs = await getPublicBlogs();
 
   return (

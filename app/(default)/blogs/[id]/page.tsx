@@ -6,17 +6,17 @@ import { getBlogById } from "../_data/get-blog-by-id";
 import { Card, CardContent, CardHeader } from "@/components/ui/card";
 import { MessageSquare } from "lucide-react";
 import { CommentsSection } from "./_components/comments-section";
+import { getPublicBlogs } from "../_data/get-public-blogs";
 
 type Props = {
   params: Promise<{ id: string }>;
 };
 
-// generateStaticParams でビルド時静的化 + コメント欄をSC動的レンダリングにすることは、
-// PPR なしには実現できない。CommentsSection 内の verifySession() が headers() を呼ぶため、
-// ルート全体が動的レンダリングに引き込まれ、generateStaticParams の効果が失われる。
-// 回避策: next.config.ts で cacheComponents: true を有効にすると PPR が適用され、
-// ブログ本文（静的シェル）はビルド時に生成され、<Suspense> 内の動的部分だけがリクエスト時に解決される。
-// 現在は unstable_cache + <Suspense> で実質同等の挙動を実現している。
+export async function generateStaticParams() {
+  const blogs = await getPublicBlogs();
+  return blogs.map((blog) => ({ id: blog.id }));
+}
+
 export default async function BlogDetailPage({ params }: Props) {
   const { id } = await params;
   const blog = await getBlogById(id);

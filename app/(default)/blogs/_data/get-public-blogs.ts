@@ -22,5 +22,4 @@ const cacheGetPublicBlogs = unstable_cache(
 export const getPublicBlogs = async () => {
   const blogs = await cacheGetPublicBlogs()
   return blogs.map(b => ({ ...b, created_at: new Date(b.created_at) }));
-
 }

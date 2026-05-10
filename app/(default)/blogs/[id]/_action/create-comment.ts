@@ -2,7 +2,8 @@
 import sql from "@/lib/auth/db";
 import { createCommentSchema, type CreateCommentInput } from "../schema";
 import { verifySession } from "@/lib/auth/verify-session";
-import { refresh } from "next/cache";
+import { updateTag } from "next/cache";
+import { commentsCacheTag } from "../_data/get-comments";
 
 export async function createComment(
   blogId: string,
@@ -28,5 +29,5 @@ export async function createComment(
     return { error: "コメントの投稿に失敗しました" };
   }
 
-  refresh();
+  updateTag(commentsCacheTag(blogId));
 }

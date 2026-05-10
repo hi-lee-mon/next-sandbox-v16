@@ -1,8 +1,15 @@
 import "server-only";
 import sql from "@/lib/auth/db";
 import { type Comment } from "../schema";
+import { cacheTag, cacheLife } from "next/cache";
+
+export const commentsCacheTag = (blogId: string) => `comments-${blogId}`;
 
 export async function getCommentsByBlogId(blogId: string): Promise<Comment[]> {
+  "use cache";
+  cacheTag(commentsCacheTag(blogId));
+  cacheLife("minutes");
+
   const rows = await sql<Comment[]>`
     SELECT comments.*, "user".name AS author_name
     FROM comments
