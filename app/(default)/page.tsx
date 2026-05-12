@@ -19,6 +19,10 @@ export default async function Home() {
         variant: "ghost",
         className: "text-blue-500 underline"
       })}>blogsへ</Link>
+      <Link href="/contact" className={buttonVariants({
+        variant: "ghost",
+        className: "text-blue-500 underline"
+      })}>contactへ</Link>
     </div>
   );
 }
