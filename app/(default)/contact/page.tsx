@@ -4,7 +4,6 @@ import { ContactList } from "./_components/contact-list";
 export default async function FormPage() {
   "use cache"
   return (
-    // TODO:UIをきれいにする
     <div className="mx-auto max-w-lg py-10 px-4">
       <div className="mb-6">
         <h1 className="text-2xl font-semibold">お問い合わせ</h1>
@@ -13,7 +12,6 @@ export default async function FormPage() {
         </p>
       </div>
       <ContactForm />
-      <hr />
       <ContactList />
     </div>
   );

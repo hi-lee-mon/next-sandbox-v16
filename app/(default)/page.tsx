@@ -1,32 +1,30 @@
 import { buttonVariants } from "@/components/ui/button";
 import Link from "next/link";
+import SectionTitle from "./_components/section-title";
+
+const L = ({ children, href }: { children: React.ReactNode, href: string }) => {
+  return (
+    <div>
+      <Link href={href} className={buttonVariants({
+        variant: "ghost",
+        className: "text-blue-500 underline"
+      })}>
+        {children}
+      </Link>
+      <br />
+    </div>
+  )
+}
 
 export default async function Home() {
   return (
-    <div>ホームページ
-      <br />
-      <Link href="/about" className={buttonVariants({
-        variant: "ghost",
-        className: "text-blue-500 underline"
-      })}>aboutへ</Link>
-      <br />
-      <Link href="/profile" className={buttonVariants({
-        variant: "ghost",
-        className: "text-blue-500 underline"
-      })}>profileへ</Link>
-      <br />
-      <Link href="/blogs" className={buttonVariants({
-        variant: "ghost",
-        className: "text-blue-500 underline"
-      })}>blogsへ</Link>
-      <Link href="/contact" className={buttonVariants({
-        variant: "ghost",
-        className: "text-blue-500 underline"
-      })}>contactへ</Link>
-      <Link href="/test" className={buttonVariants({
-        variant: "ghost",
-        className: "text-blue-500 underline"
-      })}>testへ</Link>
+    <div>
+      <SectionTitle>メインページ</SectionTitle>
+      <L href="/about">aboutへ</L>
+      <L href="/profile">profileへ</L>
+      <L href="/blogs">blogsへ</L>
+      <L href="/contact">contactへ</L>
+      <L href="/test">testへ</L>
     </div>
   );
 }

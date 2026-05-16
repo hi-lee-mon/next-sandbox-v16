@@ -1,0 +1,5 @@
+@vitest/browser-playwrightパッケージの型定義をグローバルに読み込む指示
+
+storybookでブラウザモードを使うときにvitest.config.tsで`@vitest/browser-playwrightパッケージ`を使う必要がある。
+
+テストコードを書くときに型エラーがでないようにするために必要
