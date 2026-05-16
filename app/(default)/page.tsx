@@ -23,6 +23,10 @@ export default async function Home() {
         variant: "ghost",
         className: "text-blue-500 underline"
       })}>contactへ</Link>
+      <Link href="/test" className={buttonVariants({
+        variant: "ghost",
+        className: "text-blue-500 underline"
+      })}>testへ</Link>
     </div>
   );
 }
