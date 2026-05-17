@@ -6,6 +6,10 @@
         "-y",
         "next-devtools-mcp@latest"
       ]
+    },
+    "storybook-mcp-server": {
+      "url": "http://localhost:6006/mcp",
+      "type": "http"
     }
   }
 }

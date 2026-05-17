@@ -8,9 +8,9 @@ export default defineMain({
   "addons": [
     "@chromatic-com/storybook",
     "@storybook/addon-vitest",
-    "@storybook/addon-a11y",
     "@storybook/addon-docs",
-    "@storybook/addon-mcp"
+    "@storybook/addon-mcp",
+    "@storybook/addon-a11y"
   ],
   "framework": "@storybook/nextjs-vite",
   "staticDirs": [

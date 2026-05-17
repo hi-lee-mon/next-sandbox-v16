@@ -1,7 +1,10 @@
+import addonA11y from "@storybook/addon-a11y";
+import addonDocs from "@storybook/addon-docs";
 import { definePreview } from '@storybook/nextjs-vite'
 
 export default definePreview({
   parameters: {
+    a11y: { test: 'error' },
     nextjs: {
       appDirectory: true,
     },
@@ -12,6 +15,6 @@ export default definePreview({
       },
     },
   },
-  addons: [],
+  addons: [addonDocs(), addonA11y()],
 })
 
