@@ -1,0 +1,3 @@
+- 静的コンポーネント（従来通りのテストでOK）
+- RSC（GET系。mockする）
+- RSC（suspense含む）

@@ -1,0 +1,12 @@
+.box {
+  background-color: var(--background);
+}
+
+:root {
+  --background: oklch(1 0 0);
+}
+
+/* :is(.dark *) = .dark の子孫である .box */
+:is(.dark *) {
+  --background: oklch(0.148 0.004 228.8);
+}

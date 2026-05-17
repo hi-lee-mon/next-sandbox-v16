@@ -27,6 +27,7 @@ export function ThemeToggle() {
         )}
       />
       <DropdownMenuContent align="end">
+        {/* html要素にclassName="light"を付与する */}
         <DropdownMenuItem onClick={() => setTheme("light")}>
           Light
         </DropdownMenuItem>
