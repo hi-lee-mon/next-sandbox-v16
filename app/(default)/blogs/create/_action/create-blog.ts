@@ -31,7 +31,7 @@ export async function createBlog(data: CreateBlogDTO): Promise<{ error: string }
     updateTag(privateUserBlogsCacheTag(session.user.id));
     redirect("/profile");
   } else {
-    updateTag(BLOGS_CACHE_TAG);
+    // updateTag(BLOGS_CACHE_TAG);
     redirect("/blogs");
   }
 }

@@ -15,6 +15,10 @@ startTransition に渡される関数は「アクション」と呼ばれます
 
 ## isPendingはいつまで続くのか？
 すべてのアクションが完了して最終的な状態がユーザに表示されるまで true のままになります。
+Suspense 境界の中身（実データ）は後からストリーミングされます。startTransitionはそのストリーミング完了＋DOM コミットまで含めて「終わり」とみなします。
+
+なので正確には：
+SCの再実行完了 ＝ RSCストリーミング完了 ＝ 全Suspenseが解決 ＝ トランジション完了 ＝ isPending = false
 
 ## startTransitionの使用上の注意点
 action 内で await されている非同期関数のコールもトランジションの一部ではありますが、現時点では await の後に来る set 関数は別の startTransition にラップする必要があります

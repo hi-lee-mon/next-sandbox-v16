@@ -7,12 +7,14 @@ import Interaction from "./_components/interaction";
 import F from "./_components/fallback";
 import Timer from "./_components/timer";
 import TransitionForm from "./_components/transition-form";
+import BlogList from "./_components/blog-list";
+import BlogUpdateForm from "./_components/blog-update-form";
 
 export default async function Page() {
   return (
     <div>
       <h1 className="text-2xl font-bold">Testページ</h1>
-      <Timer />
+      {/* <Timer /> */}
       <Interaction />
       <Suspense fallback={<F l="3秒待機🚨" />}>
         <Static>
@@ -63,7 +65,12 @@ export default async function Page() {
         即出る
       </DynamicCache>
       <hr className="py-10" />
+      {/* TODO:トランジションの実験ページは別途実装する */}
       <TransitionForm />
+
+      <hr className="py-10" />
+      <BlogUpdateForm />
+      <BlogList />
     </div >
   )
 }
