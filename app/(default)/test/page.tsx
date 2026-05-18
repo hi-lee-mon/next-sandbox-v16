@@ -6,6 +6,7 @@ import DynamicRuntime from "./_components/dynamic-runtime";
 import Interaction from "./_components/interaction";
 import F from "./_components/fallback";
 import Timer from "./_components/timer";
+import TransitionForm from "./_components/transition-form";
 
 export default async function Page() {
   return (
@@ -61,6 +62,8 @@ export default async function Page() {
       <DynamicCache sec={3}>
         即出る
       </DynamicCache>
+      <hr className="py-10" />
+      <TransitionForm />
     </div >
   )
 }
