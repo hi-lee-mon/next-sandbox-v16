@@ -1,5 +1,5 @@
 export default function Loading() {
   return (
-    <div>ホーム loading</div>
+    <div>(defalut)のloading</div>
   )
 }

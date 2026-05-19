@@ -1,0 +1,26 @@
+"use client"
+import { useTransition } from "react"
+import { Button } from "@/components/ui/button";
+import { useRouter } from "next/navigation";
+import { sleep } from "@/lib/sleep";
+
+export default function Page() {
+  const [isPending, startTransition] = useTransition();
+  const router = useRouter()
+
+  return (
+    <div>
+      <div className={isPending ? "animate-bounce" : ""}>
+        {isPending ? "🫨え。。。" : "😪"}
+      </div>
+      <Button onClick={async () => {
+        startTransition(async () => {
+          // 遷移前の長めの処理のisPendingを取得できる
+          await sleep(3000)
+          router.push("/wait")
+        })
+      }
+      }> waitページへ遷移</Button >
+    </div >
+  )
+}

@@ -1,20 +1,5 @@
-import { buttonVariants } from "@/components/ui/button";
-import Link from "next/link";
 import SectionTitle from "./_components/section-title";
-
-const L = ({ children, href }: { children: React.ReactNode, href: string }) => {
-  return (
-    <div>
-      <Link href={href} className={buttonVariants({
-        variant: "ghost",
-        className: "text-blue-500 underline"
-      })}>
-        {children}
-      </Link>
-      <br />
-    </div>
-  )
-}
+import { L } from "./_components/l";
 
 export default async function Home() {
   return (
@@ -25,6 +10,8 @@ export default async function Home() {
       <L href="/blogs">blogsへ</L>
       <L href="/contact">contactへ</L>
       <L href="/test">testへ</L>
+      <L href="/wait">wait</L>
+      <L href="/transition">transition</L>
     </div>
   );
 }
