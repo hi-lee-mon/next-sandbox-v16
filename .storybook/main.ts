@@ -22,6 +22,7 @@ export default defineMain({
     changeDetection: true,
     developmentModeForBuild: true,
     experimentalCodeExamples: true,
+    experimentalRSC: true,
     experimentalTestSyntax: true,
   },
   viteFinal: async (config) => {
