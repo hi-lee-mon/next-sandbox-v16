@@ -2,6 +2,20 @@ https://ja.react.dev/reference/react/useTransition
 
 useTransition は、UI を部分的にバックグラウンドでレンダーするための React フックです。
 
+ポイントは
+```
+コミットされるまで別の状態更新が優先される
+```
+のではなく
+```
+Transitionの更新は優先度が低くなるため、コミット前なら 緊急(urgent) な更新によって中断・後回し・再試行される。
+```
+startTransition が「遅延実行」ではないことです。React は transition render を始めることがあります。ただし、その作業は中断可能(interruptible) で、ユーザー入力などをブロックしないように扱われます。
+
+なのでtab切り替えによって発火したレンダリングは裏側で行われるため、またtabを切り替えるとそのレンダリングがまだ途中でも捨てる事が可能になる。
+動きとしては、tab切り替えの状態更新→レンダリング発火→レンダリング処理→コミット→画面が更新(ここでisPendingがfalseになる)
+
+
 以下戻り値
 - トランジションが保留中であるかどうかを示す isPending フラグ。
 - 更新をトランジションとしてマークするための startTransition 関数

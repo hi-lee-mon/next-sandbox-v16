@@ -15,7 +15,7 @@ sb.mock(import("next/cache"));
 // このローカル TS ファイルの mock は文字列指定にする。
 // Storybook 公式例の dynamic import 形式だと allowImportingTsExtensions が必要になり、
 // root tsconfig の許可範囲を広げるか、Storybook 用の型チェックを分ける必要がある。
-sb.mock("../app/(default)/blogs/_data/get-public-blogs.ts");
+sb.mock("../app/(default)/blogs/_data/get-public-blogs.ts", { spy: true });
 
 export default definePreview({
   tags: ['autodocs'],
