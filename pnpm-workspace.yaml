@@ -1,3 +1,64 @@
-ignoredBuiltDependencies:
-  - sharp
-  - unrs-resolver
+minimumReleaseAge: 4320
+saveExact: true
+preferFrozenLockfile: true
+onlyBuiltDependencies: []
+overrides:
+  next: 16.3.6
+  '@babel/core@7': 7.29.6
+  '@babel/helpers@7': 7.29.7
+  '@babel/runtime@7': 7.29.7
+  '@babel/traverse@7': 7.29.8
+  hono: 4.13.9
+  '@hono/node-server@1': 1.19.15
+  flatted: 3.4.4
+  effect: 3.22.2
+  smol-toml: 1.9.0
+  brace-expansion@1: 1.1.18
+  brace-expansion@2: 2.1.4
+  brace-expansion@>=3: 5.0.12
+  picomatch@2: 2.3.2
+  picomatch@>=4: 4.0.7
+  path-to-regexp: 8.4.2
+  lodash: 4.18.1
+  defu: 6.1.7
+  ws: 8.21.3
+  uuid: 14.0.2
+  qs: 6.16.0
+  esbuild: 0.28.2
+  seroval: 1.6.7
+  sharp: 0.35.4
+  ip-address: 10.7.2
+  fast-uri@3: 3.1.6
+  mysql2: 3.24.4
+  deepmerge-ts: 8.0.2
+  body-parser@2: 2.3.0
+  js-yaml: 4.3.2
+  nanoid: 3.3.19
+  '@humanfs/node': 0.17.0
+  baseline-browser-mapping: 2.11.25
+  image-size: 2.0.4
+  postcss: 8.5.28
+  valibot: 1.5.0
+  browserslist: 4.29.1
+  tar: 7.5.22
+  minimatch@3: 3.1.5
+  minimatch@9: 9.0.9
+  minimatch@10: 10.2.6
+  diff: 8.0.4
+  serialize-javascript: 7.0.5
+  ajv@6: 6.15.0
+  underscore: 1.13.8
+  shell-quote: 1.9.0
+  tmp: 0.2.7
+  form-data: 4.0.6
+  markdown-it: 14.2.0
+  linkify-it: 5.0.2
+  yaml: 2.9.1
+  cookie: 2.0.1
+  cross-spawn: 7.0.6
+  micromatch: 4.0.8
+  braces: 3.0.3
+  drizzle-orm: 0.45.3
+  postcss-selector-parser@7: 7.1.6
+  better-auth: 1.7.6
+  semver: 7.8.5
